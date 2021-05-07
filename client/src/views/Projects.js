@@ -9,6 +9,7 @@ const Projects = () => {
       <div>
         <UserNavbar />
         <Title>Projects</Title>
+        
       </div>
     );
 }

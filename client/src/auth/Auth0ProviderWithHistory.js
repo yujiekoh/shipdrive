@@ -6,7 +6,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
   // domain and clientId are necessary for the Auth0 React SDK to connect with the correct Auth0 application to process authentication
   const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-//   const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
+  const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
 
   const history = useHistory(); // Enables us to redirect a user to a specific URL
 
@@ -23,7 +23,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
       onRedirectCallback={onRedirectCallback}
       // Now that we're specifying an audience, Auth0 will send the access token in the format of a JWT.
       // Before this, the access token was not in the format of a JWT.
-    //   audience={audience}
+      audience={audience}
     >
       {children}
     </Auth0Provider>

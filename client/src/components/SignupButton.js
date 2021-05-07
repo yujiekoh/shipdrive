@@ -7,6 +7,7 @@ const SignupButton = () => {
     return (
       <Button type="primary" onClick={() => loginWithRedirect({
             screen_hint: "signup",
+            redirectUri: "http://localhost:3000/dashboard"
           })
         }
       >

@@ -3,9 +3,11 @@ require("dotenv-safe").config();
 const express = require("express");
 const session = require("express-session");
 const { auth, requiresAuth } = require("express-openid-connect");
+const jwt = require("jsonwebtoken");
 const path = require("path");
 const mongoose = require("mongoose");
 const app = express();
+const usersController = require("./controllers/users_controller.js");
 
 // MONGOOSE CONNECTION
 const MONGO_URI = process.env.MONGO_URI;
@@ -24,6 +26,8 @@ mongoose.connection.once("open", () => {
 });
 
 // MIDDLEWARE
+app.use(express.json());
+app.use("/users", usersController);
 // app.use(
 //   auth({
 //     authRequired: false, // if this is true, it means every single route requires authentication, which you don't want
@@ -48,7 +52,6 @@ app.get("/", (req, res) => {
 //   // .user lets you add things to your request object from the requiresAuth() middleware
 //   res.send(JSON.stringify(req.oidc.user));
 // })
-
 
 
 // PORT LISTENING

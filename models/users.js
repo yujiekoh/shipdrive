@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
-require("mongoose-type-email");
 const Schema = mongoose.Schema;
 
-mongoose.SchemaTypes.Email.defaults.message = "Email address is invalid";
-
-const userSchema = new Schema({
-    email: { type: mongoose.SchemaTypes.Email, required: true, unique: true },
-    password: { type: String, required: true }
+const userSchema = Schema({
+  user_id: { type: String, unique: true, required: true },
+  username: { type: String, unique: true, required: true },
+  email: { type: String, unique: true, required: true },
+  role: { type: String, required: true },
 });
 
 const User = mongoose.model("User", userSchema);
