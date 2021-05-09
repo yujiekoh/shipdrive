@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import UserNavbar from '../components/UserNavbar';
 import { Typography } from "antd";
 import { useAuth0 } from "@auth0/auth0-react";
+import ProjectsByStatus from '../components/Dashboard/ProjectsByStatus';
 
 const { Title, Paragraph } = Typography;
 
@@ -29,11 +30,12 @@ const Dashboard = () => {
     return (
       <div>
         <UserNavbar />
-        <Title>Dashboard</Title>
+        <Title level={2} className="views__title">Dashboard</Title>
         <Paragraph>{sub}</Paragraph>
         <Paragraph>{nickname}</Paragraph>
         <Paragraph>{user["https://example.com/roles"]}</Paragraph>
-
+        
+        <ProjectsByStatus />
 
       </div>
     );

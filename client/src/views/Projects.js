@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react';
 import UserNavbar from '../components/UserNavbar';
-import { Typography } from "antd";
+import { Typography, Button, Modal } from "antd";
+import ProjectsContent from "../components/Project/ProjectsContent";
 
 const { Title } = Typography;
 
 const Projects = () => {
+
     return (
       <div>
         <UserNavbar />
-        <Title>Projects</Title>
-        
+        <ProjectsContent />
       </div>
     );
 }

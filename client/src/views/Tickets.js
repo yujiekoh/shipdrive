@@ -8,7 +8,7 @@ const Tickets = () => {
     return (
       <div>
         <UserNavbar />
-        <Title>Tickets</Title>
+        <Title level={2} className="views__title">Tickets</Title>
       </div>
     );
 }

@@ -3,12 +3,14 @@ import { useHistory, Link } from "react-router-dom";
 import { Menu, Typography, Space } from "antd";
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import AuthNav from './AuthNav';
+import { useAuth0 } from "@auth0/auth0-react";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const UserNavbar = () => {
     const [userMenu, setUserMenu] = useState("");
     const history = useHistory();
+    const { user } = useAuth0();
 
     const handleClick = (e) => {
         console.log(e.key + " clicked");
@@ -32,8 +34,10 @@ const UserNavbar = () => {
         </Menu.Item>
         <Space>
           <AuthNav />
+          <Text>
+            Hi {user.nickname}, you're a {user["https://example.com/roles"]}
+          </Text>
         </Space>
-
         {/* <Menu.Item key="faq" icon={<MailOutlined />}>
           FAQ
         </Menu.Item> */}

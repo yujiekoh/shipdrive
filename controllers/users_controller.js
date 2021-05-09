@@ -7,8 +7,15 @@ const users = express.Router();
 const { checkJwt } = require("../authz/checkJwt");
 
 // Routes
+// Read - Get all users
 users.get("/", (req, res) => {
-  res.send("Sign-up page");
+  // res.send("Sign-up page");
+  User.find({}, (err, foundUsers) => {
+    if (err) {
+      res.status(400).json({ error: err.message });
+    }
+    res.status(200).json(foundUsers);
+  });
 });
 
 // Leave out JWT first

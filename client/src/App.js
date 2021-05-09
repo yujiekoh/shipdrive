@@ -22,7 +22,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div>
       <Switch>
         <Route path="/" exact component={Home} />
         <ProtectedRoute path="/dashboard" component={Dashboard} />

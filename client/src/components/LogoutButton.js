@@ -21,7 +21,7 @@ const LogoutButton = () => {
     useEffect(() => {
       // setUserObj(userModel);
       // const token = await getAccessTokenSilently();
-      fetch("/users", {
+      fetch("/api/users", {
         method: "POST",
         body: JSON.stringify(userModel),
         headers: {

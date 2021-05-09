@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
 
+/* My own styles */
 .loading {
   position: fixed;
   z-index: 1;
@@ -9,6 +10,27 @@
   bottom: 0;
 }
 
+.views__title {
+  margin: 10px 0 0 20px;
+}
+
+.projects__title__button {
+  display: flex;
+  margin: 10px 0 0 20px;
+}
+.projects__title {
+}
+
+.createProject__button {
+  margin: 5px 10px 0 1160px;
+}
+
+.projects__table {
+  margin: 20px;
+  width: 97%;
+}
+
+/* Default react styles */
 .App {
   text-align: center;
 }

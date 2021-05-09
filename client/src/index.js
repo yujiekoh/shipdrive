@@ -5,11 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Auth0ProviderWithHistory from "./auth/Auth0ProviderWithHistory";
+import { StateProvider } from "./provider/StateProvider";
+import StateReducer, { initialState } from "./reducer/StateReducer";
 
 ReactDOM.render(
   <Router>
     <Auth0ProviderWithHistory>
-      <App />
+      <StateProvider initialState={initialState} reducer={StateReducer}>
+        <App />
+      </StateProvider>
     </Auth0ProviderWithHistory>
   </Router>,
   document.getElementById("root")
