@@ -30,6 +30,35 @@
   width: 97%;
 }
 
+.project__details__form__tickets {
+  margin: 30px;
+  display: flex;
+}
+
+.project__details__form {
+  float: left;
+  width: 500px;
+}
+
+.project__details__tickets:after {
+  content: "";
+  background-color: #000;
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  top: 10px;
+  left: 25%;
+  display: block;
+}
+
+.project__details__tickets {
+  /* width: 500px; */
+  float: right;
+  margin-left: 80px;
+}
+
+
+
 /* Default react styles */
 .App {
   text-align: center;

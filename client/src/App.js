@@ -11,6 +11,7 @@ import Tickets from "./views/Tickets";
 import Profile from "./views/Profile";
 import Loading from "./components/Loading";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import ProjectDetails from './views/ProjectDetails';
 
 function App() {
   const { isLoading } = useAuth0();
@@ -26,7 +27,8 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home} />
         <ProtectedRoute path="/dashboard" component={Dashboard} />
-        <ProtectedRoute path="/projects" component={Projects} />
+        <ProtectedRoute path="/projects/:projectId" component={ProjectDetails} />
+        <ProtectedRoute path="/projects" exact component={Projects} />
         <ProtectedRoute path="/tickets" component={Tickets} />
         <ProtectedRoute path="/profile" component={Profile} />
       </Switch>
