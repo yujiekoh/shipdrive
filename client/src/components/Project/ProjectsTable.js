@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Table, Menu, Dropdown, Button } from "antd";
 import { useStateValue } from "../../provider/StateProvider";
 
@@ -26,6 +26,14 @@ const ProjectsTable = ({ projectCreated }) => {
                 console.log(err);
             })
     }, [projectCreated]);
+
+    const handleClick = (projectData) => {
+      console.log("Details clicked: ", projectData);
+      dispatch({
+        type: "GET_A_PROJECT_DETAILS",
+        projectDetails: projectData,
+      });
+    }
 
     // const handleMenuClick = (e) => {
     //   console.log("click", e);
@@ -68,7 +76,7 @@ const ProjectsTable = ({ projectCreated }) => {
         title: "",
         key: "action",
         render: (text, record) => (
-          <Link to={{pathname: `/projects/${record._id}`}}>Details</Link>
+          <Link to={{pathname: `/projects/${record._id}`}} onClick={() => handleClick(record)}>Details</Link>
         )
       },
     ];

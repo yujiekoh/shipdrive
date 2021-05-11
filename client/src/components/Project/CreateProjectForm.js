@@ -155,7 +155,6 @@ const CreateProjectForm = ({ visible, onCreate, onCancel }) => {
               style={{ width: "100%" }}
               placeholder="People working on this project"
               onChange={handleChange}
-            //   onSelect={handleSelect}
               optionFilterProp="children"
               filterOption={(input, option) =>
                 option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0

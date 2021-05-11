@@ -14,14 +14,14 @@
   margin: 10px 0 0 20px;
 }
 
-.projects__title__button {
+.page__title__button {
   display: flex;
   margin: 10px 0 0 20px;
 }
-.projects__title {
+.page__title {
 }
 
-.createProject__button {
+.create__button {
   margin: 5px 10px 0 1160px;
 }
 
@@ -40,14 +40,15 @@
   width: 500px;
 }
 
-.project__details__tickets:after {
+.project__details__form:after {
   content: "";
-  background-color: #000;
+  background-color: #f5f5f5;
   position: absolute;
-  width: 5px;
+  width: 3px;
   height: 100%;
-  top: 10px;
-  left: 25%;
+  overflow-y: auto;
+  top: 6%;
+  left: 27%;
   display: block;
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import UserNavbar from "../components/UserNavbar";
 import { Typography } from "antd";
+import TicketsContent from '../components/Ticket/TicketsContent';
 
 const { Title } = Typography;
 
@@ -8,7 +9,7 @@ const Tickets = () => {
     return (
       <div>
         <UserNavbar />
-        <Title level={2} className="views__title">Tickets</Title>
+        <TicketsContent />
       </div>
     );
 }

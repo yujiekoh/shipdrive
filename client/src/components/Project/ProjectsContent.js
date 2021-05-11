@@ -98,13 +98,13 @@ const ProjectsContent = () => {
 
     return (
       <div>
-        <div className="projects__title__button">
-          <Title level={2} className="projects__title">
+        <div className="page__title__button">
+          <Title level={2} className="page__title">
             Projects
           </Title>
           {userRole === "manager" ? (
             <Button
-              className="createProject__button"
+              className="create__button"
               type="primary"
               onClick={() => {
                 setVisible(true);
