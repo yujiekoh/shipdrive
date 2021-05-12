@@ -28,7 +28,9 @@ mongoose.connection.once("open", () => {
 
 // MIDDLEWARE
 app.use(express.json());
-// app.use("/users", usersController);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("./client/build"));
+}
 app.use("/api/users", usersController);
 app.use("/api/projects", projectsController);
 // app.use(
