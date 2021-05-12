@@ -5,7 +5,9 @@ import CreateTicketForm from "./CreateTicketForm";
 
 const { Title } = Typography;
 
-const TicketsContent = () => {
+const TicketsContent = ({ allProjects }) => {
+    // console.log(allProjects);
+
     const [ticket, setTicket] = useState({
         visible: false,
         ticketCreated: false,
@@ -45,6 +47,7 @@ const TicketsContent = () => {
               visible: false,
             });
           }}
+          allProjects={allProjects}
         />
         <TicketsTable ticketCreated={ticket.ticketCreated} />
       </div>

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const ticketSchema = Schema({
   project_id: { type: Schema.Types.ObjectId, ref: "Project" },
+  // project_name: { type: String, required: true },
   type: { type: String, unique: true, required: true },
   summary: { type: String, required: true },
   description: { type: String },
