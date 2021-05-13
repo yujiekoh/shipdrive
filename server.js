@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 const app = express();
 const usersController = require("./controllers/users_controller.js");
 const projectsController = require("./controllers/projects_controller.js");
+const ticketsController = require("./controllers/tickets_controller.js");
 
 // MONGOOSE CONNECTION
 const MONGO_URI = process.env.MONGO_URI;
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV === "production") {
 }
 app.use("/api/users", usersController);
 app.use("/api/projects", projectsController);
+app.use("/api/tickets", ticketsController);
 // app.use(
 //   auth({
 //     authRequired: false, // if this is true, it means every single route requires authentication, which you don't want

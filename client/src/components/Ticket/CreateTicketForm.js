@@ -15,15 +15,54 @@ const CreateTicketForm = ({ visible, onCreate, onCancel, allProjects }) => {
         projectAssignees: [],
     })
 
-    console.log(allProjects);
+    console.log(project);
 
+    let assigneesDropdown = [];
+
+    const onProjectChange = (value, option) => {
+      console.log(value, option);
+      const projectVal = allProjects.find((project) => project._id === value);
+      const projectValAssignees = projectVal.assigned_personnel;
+      let assigneesDropdown = [];
+      for (let i = 0; i < projectValAssignees.length; i++) {
+        assigneesDropdown.push(
+          <Option
+            key={projectValAssignees[i].user_id}
+            value={projectValAssignees[i].user_id}
+          >
+            {projectValAssignees[i].username}
+          </Option>
+        );
+      }
+      console.log(assigneesDropdown);
+      // console.log(projectVal);
+      // console.log(projectValAssignees);
+      setProject({
+        projectId: value,
+        projectObj: projectVal,
+        projectAssignees: assigneesDropdown,
+      });
+    };
+
+    let assignee_username;
+    const onTicketAssigneeChange = (value, option) => {
+      console.log(value, option.children);
+      assignee_username = option.children;
+      console.log(assignee_username);
+    };
+    
     const projectsDropdown = [];
     for (let i = 0; i < allProjects.length; i++) {
-        projectsDropdown.push(
-          <Option key={allProjects[i]._id} value={allProjects[i]._id}>{allProjects[i].name}</Option>
+      projectsDropdown.push(
+        <Option
+        key={allProjects[i]._id}
+        value={allProjects[i]._id}
+        >
+            {allProjects[i].name}
+          </Option>
         );
-    }
-    console.log(projectsDropdown);
+      }
+      console.log(projectsDropdown);
 
     const priorityContent = (
       <div>
@@ -34,25 +73,9 @@ const CreateTicketForm = ({ visible, onCreate, onCancel, allProjects }) => {
       </div>
     );
 
-    const assigneeDropdown = [];
-
-
     const [form] = Form.useForm();
 
     const { user } = useAuth0();
-
-    function onChange(value) {
-      console.log(`selected ${value}`);
-      
-    }
-
-    function onBlur() {
-      console.log("blur");
-    }
-
-    function onFocus() {
-      console.log("focus");
-    }
 
     function onSearch(val) {
       console.log("search:", val);
@@ -64,25 +87,26 @@ const CreateTicketForm = ({ visible, onCreate, onCancel, allProjects }) => {
         .then((values) => {
             form.resetFields();
             console.log(values);
-            onCreate(values);
-            // if (values.assigned_personnel === undefined) {
-            //   console.log("values.assigned_personnel: ", values.assigned_personnel);
-            //   let newValues = {
-            //     ...values,
-            //     assigned_personnel: [],
-            //   };
-            //   onCreate(newValues);
-            // } else {
-            //   onCreate(values);
-            // }
+            if (values.assignee === undefined) {
+              console.log("values.assignee: ", values.assignee);
+              let newValues = {
+                ...values,
+                project_name: project.projectObj.name,
+                assignee_username: assignee_username,
+              };
+              onCreate(newValues);
+            } else {
+              let newValues = {
+                ...values,
+                project_name: project.projectObj.name,
+                assignee_username: assignee_username,
+              };
+              onCreate(newValues);
+            }
         })
         .catch((info) => {
             console.log("Validate failed:", info);
         });
-    };
-
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
     };
 
   return (
@@ -125,9 +149,7 @@ const CreateTicketForm = ({ visible, onCreate, onCancel, allProjects }) => {
             style={{ width: 200 }}
             placeholder="Select a project"
             optionFilterProp="children"
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
+            onChange={onProjectChange}
             onSearch={onSearch}
             filterOption={(input, option) =>
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -204,23 +226,22 @@ const CreateTicketForm = ({ visible, onCreate, onCancel, allProjects }) => {
           </Radio.Group>
         </Form.Item>
         <Form.Item
-          name="assignee"
+          name="assignee_id"
           label="Assignee"
+          // dependencies={["project_id"]}
         >
           <Select
             showSearch
             style={{ width: 200 }}
-            // placeholder="Select a project"
+            placeholder="Assign someone"
             optionFilterProp="children"
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
+            onChange={onTicketAssigneeChange}
             onSearch={onSearch}
             filterOption={(input, option) =>
               option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
             }
           >
-            {projectsDropdown}
+            {project.projectAssignees}
           </Select>
         </Form.Item>
       </Form>
