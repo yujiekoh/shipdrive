@@ -24,16 +24,6 @@ projects.get("/", (req, res) => {
   });
 });
 
-// Read - Get 1 project by id on Project Details page
-// projects.get("/:id", (req, res) => {
-//   Project.findById(id, (err, foundProject) => {
-//     if (err) {
-//       res.status(400).json({ error: err.message });
-//     }
-//     res.status(200).json(foundProject);
-//   });
-// });
-
 // Update
 
 // Delete

@@ -12,6 +12,7 @@ import Profile from "./views/Profile";
 import Loading from "./components/Loading";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import ProjectDetails from './views/ProjectDetails';
+import TicketDetails from "./views/TicketDetails";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -29,6 +30,7 @@ function App() {
         <ProtectedRoute path="/dashboard" component={Dashboard} />
         <ProtectedRoute path="/projects/:projectId" component={ProjectDetails} />
         <ProtectedRoute path="/projects" exact component={Projects} />
+        <ProtectedRoute path="/tickets/:ticketId" component={TicketDetails} />
         <ProtectedRoute path="/tickets" component={Tickets} />
         <ProtectedRoute path="/profile" component={Profile} />
       </Switch>
