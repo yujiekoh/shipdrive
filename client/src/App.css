@@ -58,7 +58,31 @@
   margin-left: 80px;
 }
 
+.site-card-wrapper {
+  padding: 30px;
+  background: #ececec;
+  margin: 30px;
+}
 
+ul.pricing {
+  list-style-type: none;
+}
+
+.pricing__icon-1 {
+  margin-left: -60px;
+}
+
+.pricing__icon-2 {
+  margin-left: -73px;
+}
+
+.pricing__icon-3 {
+  margin-left: 17px;
+}
+
+.pricing__icon-4 {
+  margin-left: 6px;
+}
 
 /* Default react styles */
 .App {

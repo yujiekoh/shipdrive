@@ -30,13 +30,14 @@ const Dashboard = () => {
     return (
       <div>
         <UserNavbar />
-        <Title level={2} className="views__title">Dashboard</Title>
-        <Paragraph>{sub}</Paragraph>
+        <Title level={2} className="views__title App">
+          Dashboard
+        </Title>
+        {/* <Paragraph>{sub}</Paragraph>
         <Paragraph>{nickname}</Paragraph>
-        <Paragraph>{user["https://example.com/roles"]}</Paragraph>
-        
-        <ProjectsByStatus />
+        <Paragraph>{user["https://example.com/roles"]}</Paragraph> */}
 
+        <ProjectsByStatus className="App" />
       </div>
     );
 }
